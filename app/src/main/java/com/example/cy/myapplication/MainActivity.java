@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1;
+//    Button btn1;
 
 
     @Override
@@ -19,11 +19,12 @@ public class MainActivity extends AppCompatActivity {
         //隐藏标题栏
         getSupportActionBar().hide();
 
-        btn1 = (Button) findViewById(R.id.button1);
+        //这样写，按钮功能还可以用，但其他地方就无法使用这个按钮了
+        Button btn1 = (Button) findViewById(R.id.button1);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "发生地方", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "发生地方水电费", Toast.LENGTH_LONG).show();
             }
         });
 
