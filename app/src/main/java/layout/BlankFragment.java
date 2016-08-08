@@ -69,7 +69,7 @@ public class BlankFragment extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void DataInter(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
@@ -84,6 +84,10 @@ public class BlankFragment extends Fragment {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
+        Uri uri = new Uri.Builder().query("DataInter").build();
+        DataInter(uri);
+
     }
 
     @Override
