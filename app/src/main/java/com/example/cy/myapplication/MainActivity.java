@@ -1,5 +1,6 @@
 package com.example.cy.myapplication;
 
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,7 +15,10 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+//import layout.MapFragment;
+import layout.BlankFragment;
+
+public class MainActivity extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener{
 
     //    Button btn1;
     private ArrayList<Fragment> fragments;
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationBar.addItem(new BottomNavigationItem(R.mipmap.ic_location_on_white_24dp, "Home"))
                 .addItem(new BottomNavigationItem(R.mipmap.ic_book_white_24dp, "Books"))
-                .addItem(new BottomNavigationItem(R.mipmap.ic_music_note_white_24dp, "Music"))
+                .addItem(new BottomNavigationItem(R.mipmap.ic_music_note_white_24dp, "发现"))
                 .addItem(new BottomNavigationItem(R.mipmap.ic_tv_white_24dp, "Movies"))
                 .initialise();
 
@@ -97,18 +101,24 @@ public class MainActivity extends AppCompatActivity {
     private void setDefaultFragment() {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.layFrame, HomeFragment.newInstance("Home"));
+//        transaction.replace(R.id.layFrame, HomeFragment.newInstance("Home"));
+        transaction.replace(R.id.layFrame, BlankFragment.newInstance("Home","Map"));
         transaction.commit();
     }
 
     private ArrayList<Fragment> getFragments() {
         ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(HomeFragment.newInstance("Home"));
+//        fragments.add(HomeFragment.newInstance("Home"));
+        fragments.add(BlankFragment.newInstance("Home","地图"));
+
         fragments.add(BookFragment.newInstance("Books"));
         fragments.add(MusicFragment.newInstance("Music"));
-        fragments.add(TvFragment.newInstance("Movies"));
+        fragments.add(TvFragment.newInstance("我的"));
         return fragments;
     }
 
-
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        Toast.makeText(this,uri.getQuery(),Toast.LENGTH_LONG).show();
+    }
 }
