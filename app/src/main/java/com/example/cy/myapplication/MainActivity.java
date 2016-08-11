@@ -1,13 +1,11 @@
 package com.example.cy.myapplication;
 
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -16,8 +14,8 @@ import com.baidu.mapapi.SDKInitializer;
 
 import java.util.ArrayList;
 
-import layout.MapFragment;
 import layout.BlankFragment;
+import layout.MapFragment;
 
 public class MainActivity extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener,
         MapFragment.OnFragmentInteractionListener {
@@ -109,23 +107,23 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
 //        transaction.replace(R.id.layFrame, HomeFragment.newInstance("Home"));
-        transaction.replace(R.id.layFrame, MapFragment.newInstance("首页","地图"));
+        transaction.replace(R.id.layFrame, MapFragment.newInstance("首页", "地图"));
         transaction.commit();
     }
 
     private ArrayList<Fragment> getFragments() {
         ArrayList<Fragment> fragments = new ArrayList<>();
 //        fragments.add(HomeFragment.newInstance("Home"));
-        fragments.add(MapFragment.newInstance("首页","地图"));
+        fragments.add(MapFragment.newInstance("首页", "地图"));
 
         fragments.add(BookFragment.newInstance("扫码"));
-        fragments.add(BlankFragment.newInstance("发现","其他扩展功能"));
+        fragments.add(BlankFragment.newInstance("发现", "其他扩展功能"));
         fragments.add(TvFragment.newInstance("我的"));
         return fragments;
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-        Toast.makeText(this,uri.getQuery(),Toast.LENGTH_LONG).show();
+    public void fonFragmentInteraction(Uri uri) {
+        Toast.makeText(this, uri.getQuery(), Toast.LENGTH_LONG).show();
     }
 }
