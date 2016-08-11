@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.cy.myapplication.R;
+import com.example.mylibrary.CalcUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,7 +86,9 @@ public class BlankFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
 
-        Uri uri = new Uri.Builder().query("DataInter").build();
+        int aa = CalcUtil.add(23, 4);
+        String ss = "DataInter:" + String.valueOf(aa);
+        Uri uri = new Uri.Builder().query(ss).build();
         DataInter(uri);
 
     }
