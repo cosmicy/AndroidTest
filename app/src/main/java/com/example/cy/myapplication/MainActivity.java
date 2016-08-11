@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
 //        transaction.replace(R.id.layFrame, HomeFragment.newInstance("Home"));
-        transaction.replace(R.id.layFrame, BlankFragment.newInstance("Home","Map"));
+        transaction.replace(R.id.layFrame, MapFragment.newInstance("首页","地图"));
         transaction.commit();
     }
 
