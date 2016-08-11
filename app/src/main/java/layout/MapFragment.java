@@ -19,6 +19,7 @@ import com.baidu.mapapi.map.BaiduMapOptions;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.SupportMapFragment;
+import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.example.cy.myapplication.R;
 
@@ -44,7 +45,7 @@ public class MapFragment extends Fragment {
     /**
      * MapView 是地图主控件
      */
-    private MapView mMapView;
+    private TextureMapView mMapView;
 
 
     private OnFragmentInteractionListener mListener;
@@ -92,7 +93,7 @@ public class MapFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
-        mMapView = (MapView) view.findViewById(R.id.bmapView);
+        mMapView = (TextureMapView) view.findViewById(R.id.bmapView);
 
 
 
@@ -154,13 +155,13 @@ public class MapFragment extends Fragment {
     public void onResume() {
         super.onResume();
         //在activity执行onResume时执行mMapView. onResume ()，实现地图生命周期管理
-        mMapView.onResume();
+        //mMapView.onResume();
     }
     @Override
     public void onPause() {
         super.onPause();
         //在activity执行onPause时执行mMapView. onPause ()，实现地图生命周期管理
-        mMapView.onPause();
+        //mMapView.onPause();
     }
 
 }

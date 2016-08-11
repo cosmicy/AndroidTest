@@ -1,5 +1,6 @@
 package com.example.cy.myapplication;
 
+import android.graphics.PixelFormat;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
         //隐藏标题栏
         getSupportActionBar().hide();
 
+        //尝试用来解决百度地图闪烁黑屏问题，用TextureMapView解决了
+        //getWindow().setFormat(PixelFormat.TRANSLUCENT);
+
         //这样写，按钮功能还可以用，但其他地方就无法使用这个按钮了
 //        Button btn1 = (Button) findViewById(R.id.button1);
 //        btn1.setOnClickListener(new View.OnClickListener() {
@@ -63,9 +67,21 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
                     if (position < fragments.size()) {
                         FragmentManager fm = getSupportFragmentManager();
                         FragmentTransaction ft = fm.beginTransaction();
+                        ft.setCustomAnimations(android.R.anim.fade_in, android.R.anim.slide_out_right);
                         Fragment fragment = fragments.get(position);
                         if (fragment.isAdded()) {
-                            ft.replace(R.id.layFrame, fragment);
+                            //ft.replace(R.id.layFrame, fragment); //会重新实例化
+
+                            //使用show、hide
+                            ft.show(fragment);
+
+                            for (int i = 0; i < fragments.size(); i++) {
+                                if (i == position) {
+                                    continue;
+                                }
+                                ft.hide(fragments.get(i));
+                            }
+
                         } else {
                             ft.add(R.id.layFrame, fragment);
                         }
@@ -95,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
 
 
         fragments = getFragments();
-        setDefaultFragment();
+        //setDefaultFragment();
 
     }
 
