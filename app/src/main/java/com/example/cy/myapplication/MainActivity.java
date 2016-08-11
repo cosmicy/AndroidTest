@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements BlankFragment.OnF
     }
 
     @Override
-    public void fonFragmentInteraction(Uri uri) {
+    public void onFragmentInteraction(Uri uri) {
         Toast.makeText(this, uri.getQuery(), Toast.LENGTH_LONG).show();
     }
 }
